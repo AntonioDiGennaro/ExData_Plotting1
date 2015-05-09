@@ -1,3 +1,7 @@
+# Code assumes data file household_power_consumption.txt
+# is available in subdirectory exdata-data-household_power_consumption
+# of the current working directory
+
 hh_pc_col_classes <- c('character', 'character', 
                        'numeric', 'numeric', 'numeric', 'numeric', 'numeric', 'numeric', 'numeric')
                        
@@ -14,6 +18,11 @@ DateTime <- strptime(paste(plot4_temp[, 'Date'],
                                            ),
                                      "%d/%m/%Y %H:%M:%S")
 plot4_data <- cbind(plot4_temp, DateTime)
+
+# Produces the plot directly on a PNG device, without displaying it on the screen.
+# That's to work around an issue with LEGEND text being truncated if using dev.copy
+
+png(file="plot4.png")
 
 par(mfrow = c(2, 2))
 
@@ -59,7 +68,7 @@ with(plot4_data,
     )
     
     legend("topright"
-           , lwd = 3
+           , lwd = 1
            , col = c("black","red","blue")
            , legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
            , bty = "n"
@@ -74,5 +83,5 @@ with(plot4_data,
   }
 )
 
-dev.copy(png, file="plot4.png")
+
 dev.off()

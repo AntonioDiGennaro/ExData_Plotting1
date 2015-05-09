@@ -1,3 +1,8 @@
+# Code assumes data file household_power_consumption.txt
+# is available in subdirectory exdata-data-household_power_consumption
+# of the current working directory
+
+
 hh_pc_col_classes <- c('character', 'character', 
                        'numeric', 'numeric', 'numeric', 'numeric', 'numeric', 'numeric', 'numeric')
                        
